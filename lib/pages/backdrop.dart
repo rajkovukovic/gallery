@@ -13,6 +13,8 @@ import 'package:gallery/pages/home.dart';
 import 'package:gallery/pages/settings.dart';
 import 'package:gallery/pages/settings_icon/icon.dart' as settings_icon;
 
+import 'navigation_tabs.dart';
+
 const double _settingsButtonWidth = 64;
 const double _settingsButtonHeightDesktop = 56;
 const double _settingsButtonHeightMobile = 40;
@@ -56,7 +58,8 @@ class _BackdropState extends State<Backdrop> with TickerProviderStateMixin {
         SettingsPage(
           animationController: _settingsPanelController,
         );
-    _homePage = widget.homePage ?? const HomePage();
+    // _homePage = widget.homePage ?? const HomePage();
+    _homePage = const NavigationTabsPage();
   }
 
   @override
