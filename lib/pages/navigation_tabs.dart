@@ -4,14 +4,16 @@
 
 import 'package:flutter/cupertino.dart';
 
+import 'home.dart';
+
 // import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
 
 // BEGIN NavigationTabsPage
 
 class _TabInfo {
-  const _TabInfo(this.icon, {this.title = ''});
+  const _TabInfo(this.icon, {this.child});
 
-  final String title;
+  final Widget child;
   final IconData icon;
 }
 
@@ -23,7 +25,7 @@ class NavigationTabsPage extends StatelessWidget {
     final _tabInfo = [
       _TabInfo(
         CupertinoIcons.rectangle_split_3x1_fill,
-        // GalleryLocalizations.of(context).cupertinoTabBarHomeTab,
+        child: const HomePage(),
       ),
       _TabInfo(
         CupertinoIcons.search,
@@ -54,7 +56,7 @@ class NavigationTabsPage extends StatelessWidget {
           items: [
             for (final tabInfo in _tabInfo)
               BottomNavigationBarItem(
-                label: tabInfo.title,
+                label: '',//tabInfo.title,
                 icon: Icon(tabInfo.icon),
               ),
           ],
@@ -63,10 +65,11 @@ class NavigationTabsPage extends StatelessWidget {
           return CupertinoTabView(
             restorationScopeId: 'cupertino_tab_view_$index',
             builder: (context) => _CupertinoDemoTab(
-              title: _tabInfo[index].title,
+              title: '',//_tabInfo[index].title,
               icon: _tabInfo[index].icon,
+              child: _tabInfo[index].child,
             ),
-            defaultTitle: _tabInfo[index].title,
+            defaultTitle: '',//_tabInfo[index].title,
           );
         },
       ),
@@ -79,13 +82,16 @@ class _CupertinoDemoTab extends StatelessWidget {
     Key key,
     @required this.title,
     @required this.icon,
+    this.child,
   }) : super(key: key);
 
   final String title;
   final IconData icon;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
+    if (child != null) return child;
     return CupertinoPageScaffold(
       navigationBar: null,
       backgroundColor: CupertinoColors.systemBackground,

@@ -5,6 +5,7 @@
 import 'dart:async';
 import 'dart:math' as math;
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
@@ -47,12 +48,12 @@ class HomePage extends StatelessWidget {
       _CarouselCard(
         demo: studyDemos['reply'],
         asset: const AssetImage(
-          'assets/studies/reply_card.png',
+          'assets/discover/discover-1.png',
           package: 'flutter_gallery_assets',
         ),
         assetColor: const Color(0xFF344955),
         assetDark: const AssetImage(
-          'assets/studies/reply_card_dark.png',
+          'assets/discover/discover-1.png',
           package: 'flutter_gallery_assets',
         ),
         assetDarkColor: const Color(0xFF1D2327),
@@ -62,12 +63,12 @@ class HomePage extends StatelessWidget {
       _CarouselCard(
         demo: studyDemos['shrine'],
         asset: const AssetImage(
-          'assets/studies/shrine_card.png',
+          'assets/discover/discover-2.png',
           package: 'flutter_gallery_assets',
         ),
         assetColor: const Color(0xFFFEDBD0),
         assetDark: const AssetImage(
-          'assets/studies/shrine_card_dark.png',
+          'assets/discover/discover-2.png',
           package: 'flutter_gallery_assets',
         ),
         assetDarkColor: const Color(0xFF543B3C),
@@ -78,169 +79,171 @@ class HomePage extends StatelessWidget {
         demo: studyDemos['rally'],
         textColor: RallyColors.accountColors[0],
         asset: const AssetImage(
-          'assets/studies/rally_card.png',
+          'assets/discover/discover-3.png',
           package: 'flutter_gallery_assets',
         ),
         assetColor: const Color(0xFFD1F2E6),
         assetDark: const AssetImage(
-          'assets/studies/rally_card_dark.png',
+          'assets/discover/discover-3.png',
           package: 'flutter_gallery_assets',
         ),
         assetDarkColor: const Color(0xFF253538),
         studyRoute: rally_routes.loginRoute,
       ),
-      _CarouselCard(
-        demo: studyDemos['crane'],
-        asset: const AssetImage(
-          'assets/studies/crane_card.png',
-          package: 'flutter_gallery_assets',
-        ),
-        assetColor: const Color(0xFFFBF6F8),
-        assetDark: const AssetImage(
-          'assets/studies/crane_card_dark.png',
-          package: 'flutter_gallery_assets',
-        ),
-        assetDarkColor: const Color(0xFF591946),
-        textColor: cranePurple700,
-        studyRoute: crane_routes.defaultRoute,
-      ),
-      _CarouselCard(
-        demo: studyDemos['fortnightly'],
-        asset: const AssetImage(
-          'assets/studies/fortnightly_card.png',
-          package: 'flutter_gallery_assets',
-        ),
-        assetColor: Colors.white,
-        assetDark: const AssetImage(
-          'assets/studies/fortnightly_card_dark.png',
-          package: 'flutter_gallery_assets',
-        ),
-        assetDarkColor: const Color(0xFF1F1F1F),
-        studyRoute: fortnightly_routes.defaultRoute,
-      ),
-      _CarouselCard(
-        demo: studyDemos['starterApp'],
-        asset: const AssetImage(
-          'assets/studies/starter_card.png',
-          package: 'flutter_gallery_assets',
-        ),
-        assetColor: const Color(0xFFFAF6FE),
-        assetDark: const AssetImage(
-          'assets/studies/starter_card_dark.png',
-          package: 'flutter_gallery_assets',
-        ),
-        assetDarkColor: const Color(0xFF3F3D45),
-        textColor: Colors.black,
-        studyRoute: starter_app_routes.defaultRoute,
-      ),
+      // _CarouselCard(
+      //   demo: studyDemos['crane'],
+      //   asset: const AssetImage(
+      //     'assets/studies/crane_card.png',
+      //     package: 'flutter_gallery_assets',
+      //   ),
+      //   assetColor: const Color(0xFFFBF6F8),
+      //   assetDark: const AssetImage(
+      //     'assets/studies/crane_card_dark.png',
+      //     package: 'flutter_gallery_assets',
+      //   ),
+      //   assetDarkColor: const Color(0xFF591946),
+      //   textColor: cranePurple700,
+      //   studyRoute: crane_routes.defaultRoute,
+      // ),
+      // _CarouselCard(
+      //   demo: studyDemos['fortnightly'],
+      //   asset: const AssetImage(
+      //     'assets/studies/fortnightly_card.png',
+      //     package: 'flutter_gallery_assets',
+      //   ),
+      //   assetColor: Colors.white,
+      //   assetDark: const AssetImage(
+      //     'assets/studies/fortnightly_card_dark.png',
+      //     package: 'flutter_gallery_assets',
+      //   ),
+      //   assetDarkColor: const Color(0xFF1F1F1F),
+      //   studyRoute: fortnightly_routes.defaultRoute,
+      // ),
+      // _CarouselCard(
+      //   demo: studyDemos['starterApp'],
+      //   asset: const AssetImage(
+      //     'assets/studies/starter_card.png',
+      //     package: 'flutter_gallery_assets',
+      //   ),
+      //   assetColor: const Color(0xFFFAF6FE),
+      //   assetDark: const AssetImage(
+      //     'assets/studies/starter_card_dark.png',
+      //     package: 'flutter_gallery_assets',
+      //   ),
+      //   assetDarkColor: const Color(0xFF3F3D45),
+      //   textColor: Colors.black,
+      //   studyRoute: starter_app_routes.defaultRoute,
+      // ),
     ];
 
-    if (isDesktop) {
-      final desktopCategoryItems = <_DesktopCategoryItem>[
-        _DesktopCategoryItem(
-          category: GalleryDemoCategory.material,
-          asset: const AssetImage(
-            'assets/icons/material/material.png',
-            package: 'flutter_gallery_assets',
-          ),
-          demos: materialDemos(localizations),
-        ),
-        _DesktopCategoryItem(
-          category: GalleryDemoCategory.cupertino,
-          asset: const AssetImage(
-            'assets/icons/cupertino/cupertino.png',
-            package: 'flutter_gallery_assets',
-          ),
-          demos: cupertinoDemos(localizations),
-        ),
-        _DesktopCategoryItem(
-          category: GalleryDemoCategory.other,
-          asset: const AssetImage(
-            'assets/icons/reference/reference.png',
-            package: 'flutter_gallery_assets',
-          ),
-          demos: otherDemos(localizations),
-        ),
-      ];
+    // if (isDesktop) {
+    //   final desktopCategoryItems = <_DesktopCategoryItem>[
+    //     _DesktopCategoryItem(
+    //       category: GalleryDemoCategory.material,
+    //       asset: const AssetImage(
+    //         'assets/icons/material/material.png',
+    //         package: 'flutter_gallery_assets',
+    //       ),
+    //       demos: materialDemos(localizations),
+    //     ),
+    //     _DesktopCategoryItem(
+    //       category: GalleryDemoCategory.cupertino,
+    //       asset: const AssetImage(
+    //         'assets/icons/cupertino/cupertino.png',
+    //         package: 'flutter_gallery_assets',
+    //       ),
+    //       demos: cupertinoDemos(localizations),
+    //     ),
+    //     _DesktopCategoryItem(
+    //       category: GalleryDemoCategory.other,
+    //       asset: const AssetImage(
+    //         'assets/icons/reference/reference.png',
+    //         package: 'flutter_gallery_assets',
+    //       ),
+    //       demos: otherDemos(localizations),
+    //     ),
+    //   ];
 
-      return Scaffold(
-        body: ListView(
-          // Makes integration tests possible.
-          key: const ValueKey('HomeListView'),
-          padding: EdgeInsetsDirectional.only(
-            top: isDesktop ? firstHeaderDesktopTopPadding : 21,
-          ),
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: _horizontalDesktopPadding,
-              ),
-              child: _GalleryHeader(),
-            ),
-            SizedBox(
-              height: carouselHeight,
-              child: _DesktopCarousel(children: carouselCards),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: _horizontalDesktopPadding,
-              ),
-              child: _CategoriesHeader(),
-            ),
-            Container(
-              height: 585,
-              padding: const EdgeInsets.symmetric(
-                horizontal: _horizontalDesktopPadding,
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: spaceBetween(28, desktopCategoryItems),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsetsDirectional.only(
-                start: _horizontalDesktopPadding,
-                bottom: 81,
-                end: _horizontalDesktopPadding,
-                top: 109,
-              ),
-              child: Row(
-                children: [
-                  FadeInImagePlaceholder(
-                    image: Theme.of(context).colorScheme.brightness ==
-                            Brightness.dark
-                        ? const AssetImage(
-                            'assets/logo/flutter_logo.png',
-                            package: 'flutter_gallery_assets',
-                          )
-                        : const AssetImage(
-                            'assets/logo/flutter_logo_color.png',
-                            package: 'flutter_gallery_assets',
-                          ),
-                    placeholder: const SizedBox.shrink(),
-                    excludeFromSemantics: true,
-                  ),
-                  Expanded(
-                    child: Wrap(
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      alignment: WrapAlignment.end,
-                      children: const [
-                        SettingsAbout(),
-                        SettingsFeedback(),
-                        SettingsAttribution(),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    } else {
-      return Scaffold(
-        body: _AnimatedHomePage(
+    //   return Scaffold(
+    //     body: ListView(
+    //       // Makes integration tests possible.
+    //       key: const ValueKey('HomeListView'),
+    //       padding: EdgeInsetsDirectional.only(
+    //         top: isDesktop ? firstHeaderDesktopTopPadding : 21,
+    //       ),
+    //       children: [
+    //         Padding(
+    //           padding: const EdgeInsets.symmetric(
+    //             horizontal: _horizontalDesktopPadding,
+    //           ),
+    //           child: _GalleryHeader(),
+    //         ),
+    //         SizedBox(
+    //           height: carouselHeight,
+    //           child: _DesktopCarousel(children: carouselCards),
+    //         ),
+    //         Padding(
+    //           padding: const EdgeInsets.symmetric(
+    //             horizontal: _horizontalDesktopPadding,
+    //           ),
+    //           child: _CategoriesHeader(),
+    //         ),
+    //         Container(
+    //           height: 585,
+    //           padding: const EdgeInsets.symmetric(
+    //             horizontal: _horizontalDesktopPadding,
+    //           ),
+    //           child: Row(
+    //             mainAxisSize: MainAxisSize.max,
+    //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //             children: spaceBetween(28, desktopCategoryItems),
+    //           ),
+    //         ),
+    //         Padding(
+    //           padding: const EdgeInsetsDirectional.only(
+    //             start: _horizontalDesktopPadding,
+    //             bottom: 81,
+    //             end: _horizontalDesktopPadding,
+    //             top: 109,
+    //           ),
+    //           child: Row(
+    //             children: [
+    //               FadeInImagePlaceholder(
+    //                 image: Theme.of(context).colorScheme.brightness ==
+    //                         Brightness.dark
+    //                     ? const AssetImage(
+    //                         'assets/logo/flutter_logo.png',
+    //                         package: 'flutter_gallery_assets',
+    //                       )
+    //                     : const AssetImage(
+    //                         'assets/logo/flutter_logo_color.png',
+    //                         package: 'flutter_gallery_assets',
+    //                       ),
+    //                 placeholder: const SizedBox.shrink(),
+    //                 excludeFromSemantics: true,
+    //               ),
+    //               Expanded(
+    //                 child: Wrap(
+    //                   crossAxisAlignment: WrapCrossAlignment.center,
+    //                   alignment: WrapAlignment.end,
+    //                   children: const [
+    //                     SettingsAbout(),
+    //                     SettingsFeedback(),
+    //                     SettingsAttribution(),
+    //                   ],
+    //                 ),
+    //               ),
+    //             ],
+    //           ),
+    //         ),
+    //       ],
+    //     ),
+    //   );
+    // } else
+    {
+      return CupertinoPageScaffold(
+        backgroundColor: const Color(0x00FFFFFF),
+        child: _AnimatedHomePage(
           restorationId: 'animated_page',
           isSplashPageAnimationFinished:
               SplashPageAnimation.of(context).isFinished,
@@ -382,99 +385,102 @@ class _AnimatedHomePageState extends State<_AnimatedHomePage>
   Widget build(BuildContext context) {
     final localizations = GalleryLocalizations.of(context);
     final isTestMode = GalleryOptions.of(context).isTestMode;
-    return Stack(
-      children: [
-        ListView(
-          // Makes integration tests possible.
-          key: const ValueKey('HomeListView'),
-          restorationId: 'home_list_view',
-          children: [
-            const SizedBox(height: 8),
-            Container(
-              margin:
-                  const EdgeInsets.symmetric(horizontal: _horizontalPadding),
-              child: _GalleryHeader(),
-            ),
-            _Carousel(
-              animationController: _animationController,
-              restorationId: 'home_carousel',
-              children: widget.carouselCards,
-            ),
-            Container(
-              margin:
-                  const EdgeInsets.symmetric(horizontal: _horizontalPadding),
-              child: _CategoriesHeader(),
-            ),
-            _AnimatedCategoryItem(
-              startDelayFraction: 0.00,
-              controller: _animationController,
-              child: CategoryListItem(
-                  key: const PageStorageKey<GalleryDemoCategory>(
-                    GalleryDemoCategory.material,
-                  ),
-                  restorationId: 'home_material_category_list',
-                  category: GalleryDemoCategory.material,
-                  imageString: 'assets/icons/material/material.png',
-                  demos: materialDemos(localizations),
-                  initiallyExpanded:
-                      _isMaterialListExpanded.value || isTestMode,
-                  onTap: (shouldOpenList) {
-                    _isMaterialListExpanded.value = shouldOpenList;
-                  }),
-            ),
-            _AnimatedCategoryItem(
-              startDelayFraction: 0.05,
-              controller: _animationController,
-              child: CategoryListItem(
-                  key: const PageStorageKey<GalleryDemoCategory>(
-                    GalleryDemoCategory.cupertino,
-                  ),
-                  restorationId: 'home_cupertino_category_list',
-                  category: GalleryDemoCategory.cupertino,
-                  imageString: 'assets/icons/cupertino/cupertino.png',
-                  demos: cupertinoDemos(localizations),
-                  initiallyExpanded:
-                      _isCupertinoListExpanded.value || isTestMode,
-                  onTap: (shouldOpenList) {
-                    _isCupertinoListExpanded.value = shouldOpenList;
-                  }),
-            ),
-            _AnimatedCategoryItem(
-              startDelayFraction: 0.10,
-              controller: _animationController,
-              child: CategoryListItem(
-                  key: const PageStorageKey<GalleryDemoCategory>(
-                    GalleryDemoCategory.other,
-                  ),
-                  restorationId: 'home_other_category_list',
-                  category: GalleryDemoCategory.other,
-                  imageString: 'assets/icons/reference/reference.png',
-                  demos: otherDemos(localizations),
-                  initiallyExpanded: _isOtherListExpanded.value || isTestMode,
-                  onTap: (shouldOpenList) {
-                    _isOtherListExpanded.value = shouldOpenList;
-                  }),
-            ),
-          ],
-        ),
-        Align(
-          alignment: Alignment.topCenter,
-          child: GestureDetector(
-            onVerticalDragEnd: (details) {
-              if (details.velocity.pixelsPerSecond.dy > 200) {
-                ToggleSplashNotification().dispatch(context);
-              }
-            },
-            child: SafeArea(
-              child: Container(
-                height: 40,
-                // If we don't set the color, gestures are not detected.
-                color: Colors.transparent,
+    return Container(
+      color: const Color(0x00FFFFFF),
+      child: Stack(
+        children: [
+          ListView(
+            // Makes integration tests possible.
+            key: const ValueKey('HomeListView'),
+            restorationId: 'home_list_view',
+            children: [
+              const SizedBox(height: 8),
+              // Container(
+              //   margin:
+              //       const EdgeInsets.symmetric(horizontal: _horizontalPadding),
+              //   child: _GalleryHeader(),
+              // ),
+              _Carousel(
+                animationController: _animationController,
+                restorationId: 'home_carousel',
+                children: widget.carouselCards,
+              ),
+              // Container(
+              //   margin:
+              //       const EdgeInsets.symmetric(horizontal: _horizontalPadding),
+              //   child: _CategoriesHeader(),
+              // ),
+              // _AnimatedCategoryItem(
+              //   startDelayFraction: 0.00,
+              //   controller: _animationController,
+              //   child: CategoryListItem(
+              //       key: const PageStorageKey<GalleryDemoCategory>(
+              //         GalleryDemoCategory.material,
+              //       ),
+              //       restorationId: 'home_material_category_list',
+              //       category: GalleryDemoCategory.material,
+              //       imageString: 'assets/icons/material/material.png',
+              //       demos: materialDemos(localizations),
+              //       initiallyExpanded:
+              //           _isMaterialListExpanded.value || isTestMode,
+              //       onTap: (shouldOpenList) {
+              //         _isMaterialListExpanded.value = shouldOpenList;
+              //       }),
+              // ),
+              // _AnimatedCategoryItem(
+              //   startDelayFraction: 0.05,
+              //   controller: _animationController,
+              //   child: CategoryListItem(
+              //       key: const PageStorageKey<GalleryDemoCategory>(
+              //         GalleryDemoCategory.cupertino,
+              //       ),
+              //       restorationId: 'home_cupertino_category_list',
+              //       category: GalleryDemoCategory.cupertino,
+              //       imageString: 'assets/icons/cupertino/cupertino.png',
+              //       demos: cupertinoDemos(localizations),
+              //       initiallyExpanded:
+              //           _isCupertinoListExpanded.value || isTestMode,
+              //       onTap: (shouldOpenList) {
+              //         _isCupertinoListExpanded.value = shouldOpenList;
+              //       }),
+              // ),
+              // _AnimatedCategoryItem(
+              //   startDelayFraction: 0.10,
+              //   controller: _animationController,
+              //   child: CategoryListItem(
+              //       key: const PageStorageKey<GalleryDemoCategory>(
+              //         GalleryDemoCategory.other,
+              //       ),
+              //       restorationId: 'home_other_category_list',
+              //       category: GalleryDemoCategory.other,
+              //       imageString: 'assets/icons/reference/reference.png',
+              //       demos: otherDemos(localizations),
+              //       initiallyExpanded: _isOtherListExpanded.value || isTestMode,
+              //       onTap: (shouldOpenList) {
+              //         _isOtherListExpanded.value = shouldOpenList;
+              //       }),
+              // ),
+            ],
+          ),
+          Align(
+            alignment: Alignment.topCenter,
+            child: GestureDetector(
+              onVerticalDragEnd: (details) {
+                if (details.velocity.pixelsPerSecond.dy > 200) {
+                  ToggleSplashNotification().dispatch(context);
+                }
+              },
+              child: SafeArea(
+                child: Container(
+                  height: 40,
+                  // If we don't set the color, gestures are not detected.
+                  color: Colors.transparent,
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -782,7 +788,7 @@ class _CarouselState extends State<_Carousel>
         }
         // We want the peeking cards to be 160 in height and 0.38 helps
         // achieve that.
-        value = (1 - (value.abs() * .38)).clamp(0, 1).toDouble();
+        value = (1 - (value.abs() * 0.38)).clamp(0, 1).toDouble();
         value = Curves.easeOut.transform(value);
 
         return Center(
@@ -1113,11 +1119,12 @@ class _CarouselCard extends StatelessWidget {
   }
 }
 
-double _carouselHeight(double scaleFactor, BuildContext context) => math.max(
-    _carouselHeightMin *
-        GalleryOptions.of(context).textScaleFactor(context) *
-        scaleFactor,
-    _carouselHeightMin);
+double _carouselHeight(double scaleFactor, BuildContext context) => 650.0;
+// math.max(
+//     _carouselHeightMin *
+//         GalleryOptions.of(context).textScaleFactor(context) *
+//         scaleFactor,
+//     _carouselHeightMin);
 
 /// Wrap the studies with this to display a back button and allow the user to
 /// exit them at any time.
